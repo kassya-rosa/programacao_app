@@ -22,9 +22,17 @@
 // document.write(`<h1>Bem vindo ${name} de matricula ${matricula} do curso ${curso}</h1>`);
 // document.write(`<img src="https://fly.metroimg.com/upload/q_85,w_700/https://uploads.metroimg.com/wp-content/uploads/2022/11/10221117/5-214.jpg" alt="Img" />`)
 
-let greeting = document.getElementById("greeting");
-console.log(greeting);
+let greenting = document.getElementById("greenting");
+console.log(greenting);
 
 function login() {
     console.log("Clicou no botão!");
+
+    let username = prompt("Entre com seu nome: ");
+
+    if(username === "" || username === null) {
+        alert("O nome não pode ser vazio ou nulo");
+    } else {
+        greenting.innerHTML = `Bem vindo ${username}`;
+    }
 }

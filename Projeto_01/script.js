@@ -33,6 +33,19 @@ function login() {
     if(username === "" || username === null) {
         alert("O nome não pode ser vazio ou nulo");
     } else {
-        greenting.innerHTML = `Bem vindo ${username}`;
+        greenting.innerHTML = `Bem vindo ${username} `;
+
+        let logoutBtn = document.createElement("button");
+        logoutBtn.innerText = "Fazer logout";
+        logoutBtn.click(logout(username));
+
+        greenting.appendChild(logoutBtn);
     }
+}
+
+function logout(name) {
+    console.log("Clicou no botão de logout!");
+
+    alert("Você fez o logout");
+    greenting.innerHTML = "Até logo " + name;
 }

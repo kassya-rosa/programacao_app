@@ -28,7 +28,7 @@ export default function TelaInicial() {
 
      return <View style={estilos.container}>
           <Text style={estilos.logo}>Fortune Cookie</Text>
-          <Image source={imagem} accessibilityLabel={"Bicoito"} style={estilos.imagem}/>
+          <Image source={imagem} accessibilityLabel={"Biscoito"} style={estilos.imagem}/>
           <Botao onPress={trocarImagem}/>
           {textoVisivel && <Mensagem frase={mensagem} />}
      </View>

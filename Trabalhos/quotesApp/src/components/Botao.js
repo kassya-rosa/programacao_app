@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text } from "react-native";
 
 export default function Botao({onPress}) {
      return <Pressable style={estilos.botao}>
-          <Text style={estilos.texto} onPress={onPress}>Gerar citação</Text>
+          <Text style={estilos.texto} onPress={onPress}>Pesquisar citação</Text>
      </Pressable>
 }
 

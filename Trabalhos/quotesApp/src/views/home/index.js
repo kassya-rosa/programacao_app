@@ -3,26 +3,41 @@ import { Text, Image, StyleSheet, View } from "react-native";
 
 import Texto from "../../components/Texto";
 import Botao from "../../components/Botao";
-import { requisicaoCitacao, obterCitacaoImagem } from "../../services/requisicao";
 
-import Imagem from "../../../assets/steve.jpg"
+import Imagem from "../../../assets/semImagem.png";
+import jsonCitacoes from "../../mocks/citacoes";
 
 export default function Quote() {
-     const [dados, setDados] = useState({citacao: null, imagem: null});
+     const [imagem, setImagem] = useState(Imagem);
+     const [autor, setAutor] = useState("Autor");
+     const [frase, setFrase] = useState("Frase");
 
-     const handlePress = async () => {
-          const resultado = await obterCitacaoImagem();
-          setDados(resultado)
-      };
+     const selecionarFrase = () => {
+          // console.log(jsonCitacoes);
+          const indiceAleatorio = [Math.floor(Math.random() * jsonCitacoes.length)];
+          // console.log("Indice: ", indiceAleatorio);
+          return jsonCitacoes[indiceAleatorio];
+     }
+
+     const pegarFrase = (citacao) => {
+          // console.log("Citacao", citacao);
+          // console.log("Autor: ", citacao.autor);
+
+          setAutor(citacao.autor);
+          setImagem(citacao.imagem);
+          setFrase(citacao.frase);
+     }
 
      return <View style={estilos.org}>
           <Text style={estilos.logo}>Quotes App</Text>
-          <Image source={Imagem} style={estilos.imagem}/>
+          <Image source={imagem} style={estilos.imagem}/>
           <View style={estilos.conteudo}>
-               <Text style={estilos.titulo}>Titulo</Text>
-               <Texto texto={"Frase"}/>
+               <Text style={estilos.titulo}>{autor}</Text>
+               <Texto texto={frase}/>
           </View>
-          <Botao onPress={handlePress}/>
+
+          {/* Passar a função como callback */}
+          <Botao onPress={() => pegarFrase(selecionarFrase())}/> 
      </View>
 }
 
